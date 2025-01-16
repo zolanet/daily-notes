@@ -2,14 +2,16 @@
   "name": "daily-notes",
   "displayName": "Daily Notes",
   "description": "description of this extension",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -20,9 +22,17 @@
       {
         "command": "daily-notes.newNoteUsingTemplate",
         "title": "New Daily Note Using Template"
+      },
+      {
+        "command": "daily-notes.sortTwoLevelList",
+        "title": "Sort MD List"
       }
     ]
   },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/zolanet/daily-notes.git"
+},
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

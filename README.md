@@ -4,7 +4,7 @@ Create daily note with or without a template
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+To use a template, add a file named "_NoteTemplate.md" at the to level of your workspace.
 
 For example if there is an image subfolder under your extension project workspace:
 

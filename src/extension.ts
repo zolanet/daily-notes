@@ -9,17 +9,24 @@ import { NoteWorkspace } from './NoteWorkspace';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
-
 	const newNoteDisposable = vscode.commands.registerCommand(
 		'daily-notes.newDailyNote',
 		NoteWorkspace.newNote
 	);
-	context.subscriptions.push(newNoteDisposable);
 
-	let newNoteWithTemplateDisposable = vscode.commands.registerCommand(
+	const newNoteWithTemplateDisposable = vscode.commands.registerCommand(
 		'daily-notes.newNoteUsingTemplate',
 		NoteWorkspace.newNoteUsingTemplate
-	  );
+	);
+
+	const sortTwoLevelListDisposable = vscode.commands.registerCommand(
+		'daily-notes.sortTwoLevelList',
+		NoteWorkspace.sortTwoLevelList
+	);
+
+	context.subscriptions.push(newNoteDisposable, newNoteWithTemplateDisposable, sortTwoLevelListDisposable);
+
+	vscode.commands.executeCommand('daily-notes.newNoteUsingTemplate');
 }
 
 
