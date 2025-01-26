@@ -16,6 +16,13 @@
 				"${workspaceFolder}/out/**/*.js"
 			],
 			"preLaunchTask": "${defaultBuildTask}"
-		}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Run Current File",
+			"skipFiles": ["<node_internals>/**"],
+			"program": "${file}"
+		  }
 	]
 }

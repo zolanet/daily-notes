@@ -1,12 +1,6 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { NoteWorkspace } from './NoteWorkspace';
 
-
-
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
 	const newNoteDisposable = vscode.commands.registerCommand(
@@ -24,12 +18,29 @@ export function activate(context: vscode.ExtensionContext) {
 		NoteWorkspace.sortTwoLevelList
 	);
 
-	context.subscriptions.push(newNoteDisposable, newNoteWithTemplateDisposable, sortTwoLevelListDisposable);
+	const insertDateDisposable = vscode.commands.registerCommand(
+		'daily-notes.insertDate',
+		NoteWorkspace.insertDate
+	);
+	const insertTimeDisposable = vscode.commands.registerCommand(
+		'daily-notes.insertTime',
+		NoteWorkspace.insertTime
+	);
+
+	const insertDateTimeDisposable = vscode.commands.registerCommand(
+		'daily-notes.insertDateTime',
+		NoteWorkspace.insertDateTime
+	);
+
+	context.subscriptions.push(
+		newNoteDisposable,
+		newNoteWithTemplateDisposable,
+		sortTwoLevelListDisposable,
+		insertDateDisposable,
+		insertTimeDisposable,
+		insertDateTimeDisposable);
 
 	vscode.commands.executeCommand('daily-notes.newNoteUsingTemplate');
 }
 
-
-
-// This method is called when your extension is deactivated
 export function deactivate() { }
