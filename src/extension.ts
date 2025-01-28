@@ -1,35 +1,35 @@
 import * as vscode from 'vscode';
-import { NoteWorkspace } from './NoteWorkspace';
+import { DailyNotes } from './DailyNotes';
 
 export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
 	const newNoteDisposable = vscode.commands.registerCommand(
 		'daily-notes.newDailyNote',
-		NoteWorkspace.newNote
+		DailyNotes.newNote
 	);
 
 	const newNoteWithTemplateDisposable = vscode.commands.registerCommand(
 		'daily-notes.newNoteUsingTemplate',
-		NoteWorkspace.newNoteUsingTemplate
+		DailyNotes.newNoteUsingTemplate
 	);
 
 	const sortTwoLevelListDisposable = vscode.commands.registerCommand(
 		'daily-notes.sortTwoLevelList',
-		NoteWorkspace.sortTwoLevelList
+		DailyNotes.sortTwoLevelList
 	);
 
 	const insertDateDisposable = vscode.commands.registerCommand(
 		'daily-notes.insertDate',
-		NoteWorkspace.insertDate
+		DailyNotes.insertDate
 	);
 	const insertTimeDisposable = vscode.commands.registerCommand(
 		'daily-notes.insertTime',
-		NoteWorkspace.insertTime
+		DailyNotes.insertTime
 	);
 
 	const insertDateTimeDisposable = vscode.commands.registerCommand(
 		'daily-notes.insertDateTime',
-		NoteWorkspace.insertDateTime
+		DailyNotes.insertDateTime
 	);
 
 	context.subscriptions.push(

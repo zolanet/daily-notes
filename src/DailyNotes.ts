@@ -2,17 +2,17 @@ import * as vscode from 'vscode';
 import { join } from 'path';
 import dayjs from 'dayjs';
 
-export class NoteWorkspace {
+export class DailyNotes {
     static _rxFileExtensions = '\\.(md|markdown|mdx|fountain|txt)$';
 
     static newNoteUsingTemplate() {
-        NoteWorkspace.newNote(true);
+        DailyNotes.newNote(true);
     }
 
     static async newNote(useTemplate: boolean = false) {
-        const noteDirectory = NoteWorkspace.getWorkspaceDirectory();
+        const noteDirectory = DailyNotes.getWorkspaceDirectory();
 
-        const { filepath, fileAlreadyExists } = await NoteWorkspace.createNewNoteFile(noteDirectory, useTemplate);
+        const { filepath, fileAlreadyExists } = await DailyNotes.createNewNoteFile(noteDirectory, useTemplate);
         // open the file:
         vscode.window
             .showTextDocument(vscode.Uri.file(filepath), {
@@ -49,7 +49,7 @@ export class NoteWorkspace {
             return;
         }
 
-        let sortedList = NoteWorkspace.sortList(text);
+        let sortedList = DailyNotes.sortList(text);
 
         // Replace the selected content in the origin file with a wiki-link to the new file
         const edit = new vscode.WorkspaceEdit();
@@ -64,15 +64,15 @@ export class NoteWorkspace {
     }
 
     static insertDate() {
-        NoteWorkspace.insertText(dayjs().format('YYYY-MM-DD'));
+        DailyNotes.insertText(dayjs().format('YYYY-MM-DD'));
     }
 
     static insertTime() {
-        NoteWorkspace.insertText(dayjs().format('HH:mm'));
+        DailyNotes.insertText(dayjs().format('HH:mm'));
     }
 
     static insertDateTime() {
-        NoteWorkspace.insertText(dayjs().format('YYYY-MM-DD HH:mm:ss'));
+        DailyNotes.insertText(dayjs().format('YYYY-MM-DD HH:mm:ss'));
     }
 
     static insertText(text: string) {
